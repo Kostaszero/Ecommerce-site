@@ -1,0 +1,143 @@
+<section class="billing flex">
+
+    <div class="text-default">{{title_name}}</div>
+
+    <ng-container *ngIf="title_name[0] == 'S'">
+        <div class="text" style="font-size: 1.4rem; color: #da1212;;position: relative; right: 20%; padding: 30px 0 0;">
+            * Indicates required field
+        </div>
+
+        <form class="ship-form" *ngIf="title_name[0] == 'S'" #shipForm="ngForm" (ngSubmit)="openPaymentCard()">
+            <div class="container" *ngFor="let item of ship_details;let idx = index;trackBy:trackByIndex;">
+
+                <label for="{{item.for}}"> 
+                    <span>{{item.for}}</span> 
+                    <span *ngIf="item.isRequired" class="flex center" style="margin-left: 4px; color: red;">*</span> 
+                </label>
+
+                <input [(ngModel)]="ship_details[idx].value" name="{{item.for}}" type="text" 
+                placeholder="{{item.example}}" [required]="item.isRequired" #fieldType="ngModel">
+
+                <div class="text empty" *ngIf="item.isRequired && fieldType.touched && !item.value">
+                    This cannot be empty
+                </div>
+
+                <div class="text empty" *ngIf="item.isRequired && item.value && checkNumType(item.for, item.value, idx)">
+                    Only numbers are allowed
+                </div>
+
+            </div>
+
+            <div class="container" style="display: grid; grid-template-columns: 0.25fr; margin: 30px 20px 10px;">
+                <button type="submit" class="continue-btn">
+                    <span>Continue</span>
+                    <span id="arrow">&#x27A4;</span>
+                </button>
+            </div>
+
+        </form>
+    </ng-container>
+
+    <ng-container *ngIf="title_name[0] == 'P'">
+        <div style="display: flex; align-items: flex-start; flex-direction: column;">
+            <div style="display: flex; flex-flow: column; margin: 22px"> 
+                <label for="fname">Accepted Cards</label>
+                <div class="icon-container">
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                </div>
+            </div>
+            <form #cardForm="ngForm" class="card-form" (ngSubmit)="proceedToPayment()">
+                <div class="card-container">
+                  <label class="card-label" for="candidate-name">CANDIDATE NAME</label>
+                  <input class="card-input" type="text" placeholder="David Fincher"
+                    [(ngModel)]="card_details.candidate_name" 
+                    name="candidate_name" 
+                    #cardName="ngModel"
+                    required
+                  >
+                  <div class="text empty" *ngIf="cardName.touched && !card_details.candidate_name">
+                    Candidate name is required
+                  </div>
+                </div>
+              
+                <div class="card-container">
+                  <label class="card-label" for="card-number">CARD NUMBER</label>
+                  <input class="card-input" type="text" placeholder="4321 5678 9012 3456"
+                    [(ngModel)]="card_details.card_number" 
+                    name="card_number" 
+                    #cardNumberInput="ngModel"
+                    required
+                    pattern="^[0-9]$"
+                  >
+                  <div class="text empty" *ngIf="cardNumberInput.touched && cardNumberInput.hasError('required')">
+                    Card number is required
+                  </div>
+                  <div class="text empty" *ngIf="cardNumberInput.touched && cardNumberInput.hasError('pattern')">
+                    only digits are allowed
+                  </div>
+                </div>
+              
+                <div class="expiry">
+                  <div class="card-container small-container">
+                    <label class="card-label" for="expiry-month">EXPIRY MONTH</label>
+                    <input [(ngModel)]="card_details.expiry_month"
+                      name="expiry_month" class="card-input" type="text" placeholder="06"
+                      required
+                      #expiryMonth="ngModel"
+                      pattern="^(0[1-9]|1[0-2])$"
+                    >
+                    <div class="text empty" *ngIf="expiryMonth.touched && expiryMonth.hasError('required')">
+                      Expiry month is required
+                    </div>
+                    <div class="text empty" *ngIf="expiryMonth.touched && expiryMonth.hasError('pattern')">
+                      Enter valid month
+                    </div>
+                  </div>
+              
+                  <div class="card-container small-container">
+                    <label class="card-label" for="expiry-year">EXPIRY YEAR</label>
+                    <input [(ngModel)]="card_details.expiry_year"
+                      name="expiry_year" class="card-input" type="text" placeholder="2023"
+                      required
+                      #expiryYear="ngModel"
+                      pattern="^[0-9]{4}$"
+                    >
+                    <div class="text empty" *ngIf="expiryYear.touched && expiryYear.hasError('required')">
+                      Expiry year is required
+                    </div>
+                    <div class="text empty" *ngIf="expiryYear.touched && expiryYear.hasError('pattern')">
+                      Enter valid year
+                    </div>
+                  </div>
+              
+                  <div class="card-container small-container">
+                    <label class="card-label" for="cvv">CVV</label>
+                    <input [(ngModel)]="card_details.cvv"
+                      name="cvv" class="card-input" type="text" placeholder="145"
+                      required
+                      #cvv="ngModel"
+                      pattern="^[0-9]{3,4}$"
+                    >
+                    <div class="text empty" *ngIf="cvv.touched && cvv.hasError('required')">
+                      CVV is required
+                    </div>
+                    <div class="text empty" *ngIf="cvv.touched && cvv.hasError('pattern')">
+                      Enter valid CVV
+                    </div>
+                  </div>
+                </div>
+            </form>
+            <div class="container" style="width: 150px;">
+              <button type="submit" class="continue-btn" style="background-color: hsl(147.22deg 95.65% 23.66% / 80%);">
+                <span>Proceed</span>
+                <span id="arrow" style="margin-left: 8px;">&#x27A4;</span>
+              </button>
+            </div>
+        </div>
+    </ng-container>
+
+
+</section>

@@ -1,0 +1,75 @@
+<div class="flex" [class]="{'cart': showItems, 'cart-nor': !showItems}">
+
+    <div [class]="{tilt: showItems, nor: !showItems}">
+        <app-polaroid [data]="polaroid_data" [isSmall]="!showItems"></app-polaroid>
+        <div *ngIf="460 >= winX && !showItems" [class]="{'item-container': showItems, 'item-container-nor': !showItems}">
+            <app-price-card [style.marginBottom.px]=" (!showItems) ? 30 : 0 " [show_only_net]="!showItems" [price_details]="
+            [
+                {
+                    'total_price': total_count * discount + price_data.price,
+                    'discount': this.price_data.discount,
+                    'price': price_data.price
+                },
+                {
+                    'total': 'Total Price',
+                    'net' :'Net Price'
+                }
+            ]
+            ">
+            </app-price-card>
+        </div>
+    </div>
+    
+    <div class="flex" [class]="{'price': showItems, 'price-nor': !showItems}">
+        
+        <div [style.display]="(showItems) ? 'block' : (winX > 460) ? 'block' : 'none'" 
+            [class]="{'item-container': showItems, 'item-container-nor': !showItems}">
+            <app-price-card [style.marginBottom.px]=" (!showItems) ? 30 : 0 " [show_only_net]="!showItems" [price_details]="
+            [
+                {
+                    'total_price': total_count * discount + price_data.price,
+                    'discount': '-'+this.price_data.discount+'%',
+                    'price': price_data.price
+                },
+                {
+                    'total': 'Total Price',
+                    'net' :'Net Price'
+                }
+            ]
+            ">
+            </app-price-card>
+        </div>
+
+        <div [class]="{'item-container': showItems, 'item-container-nor': !showItems}">
+            <div [class.flex-around]="!showItems">
+                <div class="flex center" 
+                    [class]="{'btn-area-custom': (!showItems), 'btn-area': (showItems)}">
+    
+                    <button [disabled]="total_count == 1" (click)="updatePrices(-1)"
+                    [class]="{'btn-custom': (!showItems), 'btn': (showItems)}">
+                        -
+                    </button>
+                    <div [style.marginBottom]="showItems ? 0 : (460 >= winX) ? '50%' : 0" 
+                        style="padding: 0;">
+                        {{total_count}}
+                    </div>
+                    <button [disabled]="total_count == 5" (click)="updatePrices(1)"
+                    [class]="{'btn-custom': (!showItems), 'btn': (showItems)}">
+                        +
+                    </button>
+    
+                </div>
+    
+                <div *ngIf="!showItems" class="trash-bin flex center" (click)="removeItem()">
+                    <img src=" assets/remove-icon.svg" alt="trash-bin" style="width: 25px; height: 25px;">
+                </div>
+            </div>
+    
+            <div *ngIf="showItems" class="bag-text flex center" (click)="sendItemToBag()">
+                Add to Bag
+            </div>
+
+        </div>
+
+    </div>
+</div>

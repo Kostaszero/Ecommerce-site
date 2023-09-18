@@ -1,0 +1,67 @@
+.total-price, .net-price, .discount-text{
+    justify-content: space-between;
+}
+.discount{
+    justify-content: flex-end;
+}
+.custom-text{
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    font-size: 18px;
+    line-height: 2.2rem;
+    font-weight: 500;
+    padding: 0px 0px 20px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    transition: all 0.5s ease;
+}
+.rupee{
+    font-family: var(--secondary-font);
+    margin-right: 2px;
+    font-weight: 500;
+}
+.total-net{
+    font-weight: 800;
+    font-size: 20px;
+    padding: 20px 0;
+    border-top: 1px solid #0f0f0f;
+}
+
+$small-mobile: 460px;
+$mobile: 576px;
+$small-tab: 767px;
+$tab: 825px;
+$pc: 992px;
+$lg-pc: 1200px;
+
+@media (min-width: $pc){
+    .net-price{
+        min-width: 150px;
+    }
+}
+@media (max-width: $small-mobile) {
+    .custom-text{
+        font-size: 16px;
+        line-height: 2rem;
+        padding: 5px 0px;
+    }
+    .extraPadding{
+        padding: 15px 0px;
+    }
+    .text-sm{
+        font-size: 14px;
+        line-height: 1.8rem;
+        font-weight: 500;
+        padding: 20px 0px;
+    }
+}
+@media (max-width: $mobile) {
+    .text-sm{
+        font-size: 14px;
+        line-height: 1.8rem;
+        font-weight: 500;
+    }
+}

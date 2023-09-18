@@ -1,0 +1,8 @@
+<div class="item" [style.boxShadow]="draw_box_shadow">
+    <div [class.image-container-sm]="isSmall" class="image-container">
+        <img class="thumbNail" src="https://picsum.photos/400/350?random={{data.id}}" alt="randomImage">
+    </div>
+    <div class="flex center" [class]="{'title': !isSmall, 'title-sm': isSmall}">
+        {{data.item_data.title}}
+    </div>
+</div>

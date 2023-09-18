@@ -1,0 +1,73 @@
+#right{
+    margin-left: var(--divison-width);
+}
+.rt-container{
+    padding: 15px 20px;
+}
+.itemGrid{
+    display: flex;  
+    flex-wrap: wrap;
+}
+.item-holder{
+    width: calc(100%/3 - 60px);
+    margin: 20px 30px 40px;
+    padding: 0;
+}
+
+
+$small-mobile: 460px;
+$mobile: 576px;
+$small-tab: 767px;
+$tab: 825px;
+$pc: 992px;
+$lg-pc: 1100px;
+
+@media (min-width: ($small-mobile + 1)) and (max-width: $mobile) {
+    .item-holder{
+        width: calc(100% - 60px);
+    }
+    .rt-container{
+        padding: 15px 10px;
+    }
+}
+@media (max-width: $small-mobile){
+    .item-holder{
+        width: calc(100% - 40px);
+        margin: 20px 20px 40px;
+    }
+    .rt-container{
+        padding: 15px 10px;
+    }
+}
+@media (min-width: $mobile) and (max-width: $lg-pc) {
+    .item-holder{
+        width: calc(100%/2 - 60px);
+    }
+    .rt-container{
+        padding: 15px 0px;
+    }
+}
+@media (max-width: ($small-tab + 1)) {
+    #right{
+        margin: 0;
+    }
+}
+@media (min-width: ($pc + 1)) {
+    
+    .item-holder:hover{
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+}
+
+::ng-deep {
+    .mdc-text-field--filled {
+        background: transparent !important;
+    }
+    mat-select, mat-label, .mat-mdc-select-arrow {
+        color: var(--primary-color) !important;
+    }
+    // .mat-mdc-select{
+    //     width: 60px !important;
+    // }
+}

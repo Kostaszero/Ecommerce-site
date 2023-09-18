@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&family=Lobster+Two:wght@700&family=Poppins&display=swap');
+
+:root{
+    --bg-color: #fff;
+    --dark-bg-color: #1d1e21;
+    --primary-color: #0f0f0f;
+    --white-color: #efefef;
+    --secondary-color: rgb(255, 37, 73);
+    --app-drawer-bg-color: #0f0f0f;
+    font-size: 10px;
+    --nav-tab-bar-width: 235px;
+    --primary-font: 'Poppins', sans-serif;
+    --secondary-font: "Roboto","Arial",sans-serif;
+    --tertiary-font: 'Lobster Two', cursive;
+    --text-font: 'Just Another Hand', cursive;
+    --divison-width:  calc(100%/6);
+}
+
+*{
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.hide-scroll{
+    overflow: hidden !important;
+}
+.flex{
+    display: flex;
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}
+.text-ellipse{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

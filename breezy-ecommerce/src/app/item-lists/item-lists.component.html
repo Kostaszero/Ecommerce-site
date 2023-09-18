@@ -1,0 +1,36 @@
+<!-- <ng-container *ngIf="!isLoaded">
+    <div class="loader"></div>
+</ng-container>  (load)="checkIfLoaded()"-->
+<div class="item" mat-button (click)="openDialog()">
+    <div class="image-container">
+        <img class="thumbNail" src="{{item.img_src}}" alt="randomImage" >
+    </div>
+    <div class="rating">
+        <div class="rating-tag">
+            {{item.rating}}
+        </div>
+        <div class="star">
+            <img style="width: 100%; height: 100%;" src="assets/rating-star.svg" alt="star-icon">
+        </div>
+    </div>
+    <div class="content-info flex center">
+        <div style="margin: 0; padding: 0">
+            <div class="title">{{item.title}}</div>
+            <div class="flex">
+                <span class="price-tag rupee">₹</span>
+                <span class="price-tag net-price-tag">{{item.price}}</span>
+                
+                <span class="price-tag rupee" style="text-decoration: line-through;font-weight: 300;">₹</span>
+                <span class="price-tag" style="text-decoration: line-through; color: #474545;">{{item.price + discount}}</span>
+                
+            </div>
+        </div>
+
+        <div class="title offer flex center">
+            -{{item.discount}}%
+            <img style="margin-left: 5px;width: 100%; height: 100%;" src="assets/offer-icon.svg" alt="offer-icon">
+        </div>
+
+    </div>
+</div>
+  

@@ -1,0 +1,229 @@
+.cart, .cart-nor{
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    padding: 10px 20px;
+}
+.tilt{
+    width: 50%; 
+    transform: rotate(-6deg);
+    transition: all 0.3s ease;
+}
+.nor{
+    width: 45%; 
+    transform: rotate(0deg)
+}
+.price, .price-nor{
+    flex-flow: column;
+    width: 35%;
+}
+.flex-around{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-area{
+    justify-content: space-evenly; margin: 20px;
+}
+.btn-area-custom{
+    width: 50%; justify-content: space-between;
+}
+.btn, .btn-custom, .bag-text{
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    font-size: 18px;
+    line-height: 2.2rem;
+    font-weight: 500;
+    padding: 0 0px 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.btn, .btn-custom{
+    background: none;
+    border: 1px solid var(--primary-color);
+    padding: 7px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.btn:hover, .btn-custom:hover{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.btn:disabled, .btn-custom:disabled{
+    cursor: not-allowed;
+}
+
+.trash-bin{
+    width: 45px;
+    height: 45px; 
+    // margin-left: 36px; 
+    cursor: pointer;
+}
+.trash-bin:hover{
+    background-color: #999;
+    border-radius: 50%;
+}
+
+.bag-text{
+    padding: 14px 20px;
+    font-size: 16px;
+
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+
+    border-radius: 11px;
+    margin: 30px 20% 0;
+    cursor: pointer;
+}
+.item-container, .item-container-nor{
+    margin: 0;
+    padding: 0;
+}
+
+$small-mobile: 460px;
+$mobile: 576px;
+$small-tab: 767px;
+$tab: 825px;
+$pc: 992px;
+$lg-pc: 1200px;
+
+@media (max-width: $small-tab) {
+    .cart{
+        flex-direction: column;
+    }
+    .cart-nor{
+        padding: 10px 15px;
+    }
+    .price-nor{
+        width: 37%;
+    }
+    .price{
+        width: 40%;
+    }
+    .btn-custom{
+        font-size: 14px;
+        line-height: 1.8rem;
+    }
+    
+}
+@media (min-width: ($mobile + 1)) and (max-width: $small-tab) {
+    .tilt{
+        width: 65%;
+    }
+    .item-container{
+        width: 45%;
+    }
+    .price{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .bag-text{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: ($small-mobile + 1)) and (max-width: $mobile) {
+    .tilt{
+        width: 70%;
+    }
+    .item-container{
+        width: 50%;
+    }  
+    .cart-nor{
+        justify-content: space-between;
+        padding: 10px 10px;
+    }
+    .nor{
+        width: 50%;
+    }
+    .price-nor{
+        width: 40%;
+    }
+    .price{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .btn-area{
+        justify-content: space-around;
+        margin: 10px;
+    }
+    .btn-area-custom{
+        width: 56%;
+        justify-content: space-between;
+    }
+    .btn-custom{    
+        font-size: 12px;
+        line-height: 1.6rem;
+    }
+    .bag-text{
+        padding: 10px;
+        font-size: 14px;
+        margin: 20px 15% 0;
+    }
+}
+
+@media (max-width: $small-mobile){
+    .cart-nor{
+        flex-direction: row;
+        padding: 10px 0px 10px 10px;
+    }
+    .nor{
+        width: 65%;
+    }
+    .tilt{
+        width: 75%;
+    }
+    .item-container{
+        width: 85%;
+    }
+    .price{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 40%;
+    }
+    .price-nor{
+        width: 20%;
+        margin-left: 20px;
+    }
+    .btn-area{
+        justify-content: space-around;
+        margin: 10px;
+    }
+    .btn-area-custom{
+        width: 80%;
+        flex-flow: column;
+        margin-bottom: 30px;
+        justify-content: space-between;
+    }
+    .btn-custom{    
+        font-size: 12px;
+        line-height: 1.6rem;
+        margin-bottom: 50%;
+    }
+    .trash-bin{
+        transform: scale(0.8);
+    }
+    .bag-text{
+        padding: 10px;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+}
+
+::ng-deep{
+    .mat-mdc-dialog-container .mdc-dialog__surface{
+        background: linear-gradient(var(--bg-color), rgb(251 227 231)) !important;
+    }
+}

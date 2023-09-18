@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Luckiest+Guy&display=swap');
+main{
+    height: 85vh; 
+    background-image: linear-gradient( rgb(190 255 251 / 60%) 70%, #fff);
+}
+.pg-container{
+    flex-flow: column;
+    height: 100%;
+}
+.text{
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 3.8rem;    
+    padding: 16px;
+    margin-bottom: 30px;
+}
+.one{
+    font-family: 'Luckiest Guy', cursive; font-size: 18rem; padding: 0;
+}
+.two{
+    font-family: 'Luckiest Guy', cursive; font-size: 16rem; padding: 0;
+}
+.loader {
+    width: 160px;
+    height: 185px;
+    position: relative;
+    background: #633b1e;
+    border-radius: 100px 100px 90px 90px;
+    margin-bottom: 30px;
+}
+.loader:after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 125px;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%);
+    background-image: radial-gradient(circle, #000 48%, transparent 55%),
+      radial-gradient(circle, #000 48%, transparent 55%),
+      radial-gradient(circle, #633b1e 30%, transparent 45%),
+      radial-gradient(circle, #000 48%, transparent 51%),
+      linear-gradient(#000 20px, transparent 0),
+      linear-gradient(#735858 60px, transparent 0),
+      radial-gradient(circle, #735858 50%, transparent 51%),
+      radial-gradient(circle, #735858 50%, transparent 51%);
+    background-repeat: no-repeat;
+    background-size: 16px 16px, 16px 16px, 10px 10px, 42px 42px, 12px 3px,
+      50px 25px, 70px 70px, 70px 70px;
+    background-position: 25px 10px, 55px 10px, 36px 44px, 50% 30px, 50% 85px,
+      50% 50px, 50% 22px, 50% 45px;
+    animation: faceLift 2s linear infinite alternate;
+}
+.loader:before {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 125px;
+    left: -20%;
+    top: 0;
+    background-image: radial-gradient(circle, #633b1e 48%, transparent 50%),
+      radial-gradient(circle, #633b1e 48%, transparent 50%);
+    background-repeat: no-repeat;
+    background-size: 65px 65px;
+    background-position: 0px 12px, 145px 12px;
+    animation: earLift 2s linear infinite alternate;
+}
+  
+@keyframes faceLift {
+    0% {
+      transform: translateX(-60%);
+    }
+    100% {
+      transform: translateX(-30%);
+    }
+}
+@keyframes earLift {
+    0% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+}
+.pc{
+    margin-bottom: 25px;
+}
+.pc{
+    margin-bottom: 60px;
+}
+.mob{
+    display: none;
+}
+
+$mobile: 576px;
+$small-tab: 767px;
+
+@media (min-width: $mobile) and (max-width: $small-tab){
+    .text{
+        font-size: 2.6rem;
+    }
+    .one{
+        font-size: 12rem;
+    }
+    .two{
+        font-size: 10rem;
+    }
+    .loader{
+        transform: scale(0.7);
+    }
+}
+@media (max-width: $mobile){
+    main{
+        height: 75vh;
+        background-image: linear-gradient( rgb(190 255 251 / 60%) 10%, #fff);
+    }
+    .pc{
+        display: none;
+    }
+    .mob{
+        display: flex;
+        flex-direction: column;
+    }
+    .text{
+        font-size: 1.8rem;
+        padding: 6px;
+        margin-bottom: 20px;
+    }
+    .one{
+        font-size: 5rem;
+    }
+    .loader{
+        transform: scale(0.7);
+        margin-bottom: 0;
+    }
+}
+    

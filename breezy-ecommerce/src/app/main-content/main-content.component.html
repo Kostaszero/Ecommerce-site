@@ -1,0 +1,9 @@
+<div id="right">
+    <div class="flex rt-container">
+      <div class="itemGrid">
+          <div class="item-holder" *ngFor="let item of itemList; let i=index">
+            <app-item-lists [itemDetails]="{'item_data': item, 'id': item.rel}"></app-item-lists>
+          </div>
+      </div>
+    </div>
+</div>

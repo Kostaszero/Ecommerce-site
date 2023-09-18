@@ -1,0 +1,215 @@
+#top{
+    padding: 28px 0 50px;
+    justify-content: space-between !important;
+    width: 100%;
+    position: fixed;
+    top: -5px;
+    left: 0;
+    z-index: 999;
+    background-image: linear-gradient(180deg, transparent, #fff 5%, #fff 20%, #fff 40%,rgb(202, 255, 255) 80%, transparent);
+}
+#bottom{
+    margin-top: 70px;
+    padding-top: 50px;
+    height: 100%;
+    background-image: linear-gradient(180deg, transparent, rgb(202, 255, 251) 1%, #fff 20%, #fff, rgb(190, 255, 251) 80%, #eee);
+}
+#top > div:not(:last-child){
+    margin-right: 25px;
+}
+#top{
+    padding-left: 26px;
+    padding-right: 26px;
+}
+.logo{
+    font-family: var(--tertiary-font);
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 22px;
+    cursor: pointer;
+}
+.search-bar{
+    // background: hsl(0, 0%, 91%);
+    color: hsla(0, 0%, 0%, 0.88);
+    border: 1px solid hsl(0, 0%, 18.82%);
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-family: var(--primary-font);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+}
+.search-btn{
+    fill: currentcolor;
+    border-left: none;
+    padding-right: 18px;
+    cursor: pointer;
+}
+#user{
+    display: flex; 
+    align-items: center; 
+    position: relative;
+}
+.red-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(255, 58, 58);
+    position: absolute;
+    top: -6px;
+    right: -5px;
+}
+.bag-text-tag{
+    position: absolute;
+    top: 0px;
+    left: -250px;
+}
+.text-tag{
+    font-weight: 600;
+    font-family: var(--primary-font);
+    font-size: 12px;
+    color: var(--white-color);
+    background-color: rgb(234, 75, 101);
+    padding: 8px 14px;
+    border-radius: 12px;
+    cursor: default;
+    line-height: 24px;
+}
+#shop-bag{
+    height: 100%; width: 100%;
+}
+.user-icon{
+    height: 40px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-family: var(--primary-font);
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(237, 237, 237);
+    background-color: rgb(229, 85, 85);
+    border-radius: 12px;
+    margin: 0 8px;
+}
+
+.nav-item{
+    margin-left: 45px;
+    cursor: pointer;
+    transition: margin 1s ease;
+}
+.bag-container{
+    height: 40px; 
+    position: relative;    
+    margin-left: 20px;
+}
+
+.small-device{
+    margin-top: 4px;
+}
+
+$x-small-mobile: 380px;
+$mobile: 576px;
+$small-tab: 767px;
+$tab: 825px;
+$pc: 992px;
+$lg-pc: 1200px;
+
+@media (min-width: $pc) {
+    .search-bar{
+        width: 470px;
+    }
+}
+@media (min-width: ($small-tab)) {
+    .big-device{
+        display: block;
+        position: absolute;
+        right: 0;
+    }
+    .small-device{
+        display: none;
+    }
+}
+@media (max-width: $small-tab){
+    .search-bar{
+        display: none;
+    }
+    .search-btn{
+        width: 50px;
+        // position: relative;
+        // left: 60%;
+        // padding: 1px 18px 0 0;
+    }
+    .big-device{
+        display: none;
+    }
+    .small-device{
+        display: block;
+    }
+}
+@media (max-width: $mobile) {
+    #top{
+        padding: 24px 15px !important;
+    }
+    #bottom{    
+        margin-top: 50px;
+    }
+    .logo{
+        font-size: 35px;
+    }
+    .nav-item{
+        margin-left: 25px;
+    }
+    .bag-container{
+        height: auto;
+        margin-left: 15px !important;
+    }
+    .search-btn{
+        width: 40px;
+    }
+    .small-device{
+        padding-right: 10px;
+        margin: 0;
+    }
+    #shop-bag{
+        height: 30px;
+        width: 30px;
+    }
+    .user-icon{
+        height: 38px;
+        padding: 16px 14px;
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    .bag-text-tag{
+        left: -220px;
+        transform: scale(0.8);
+        top: -4px;
+    }
+
+}
+@media (max-width: $x-small-mobile) {
+    #top{
+        padding: 20px 15px !important;
+    }
+    .logo{
+        font-size: 30px;
+    }
+    .search-btn{
+        width: 35px;
+    }
+    #shop-bag{
+        height: 27px;
+        width: 27px;
+    }
+    .user-icon{
+        height: 30px;
+        padding: 12px 11px;
+        font-size: 12px;
+        border-radius: 8px;   
+        margin-left: 30px;
+    }
+    .nav-item{
+        margin-right: 0;
+    }
+}

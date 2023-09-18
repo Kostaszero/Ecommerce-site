@@ -1,0 +1,94 @@
+<div class="cart-area flex" [class]="{'cart-area-empty': !list_length, 'cart-area': list_length}">
+
+    <div class="center upper-list"
+     [style.display]="!list_length ? 'none': 'flex' ">
+        <div *ngIf="list_length" class="cart">
+
+            <div class="stack" (touchstart)="onTouchStart($event)">
+                <div class="polaroid-wrapper flex center" *ngFor="let itr of [1,2,3]">
+                    <app-polaroid [data]="{
+                        'item_data': polaroid_list[0].item_data,
+                        'id': polaroid_list[0].id,
+                        'boxShadow': false
+                    }" [isSmall]="true">
+                    </app-polaroid>
+                </div>
+                
+                <div *ngIf="notify >= 1" class="bag-text-tag flex">
+                    <span style="transform: rotateY(-180deg) ;font-size: 45px; margin-top: 1px; color: rgb(234, 75, 101);">&#8250;</span>
+                    <span class="text-tag">double tap to view your polaroids</span>
+                </div>
+            </div>
+
+            <div class="payment-area">
+                <app-price-card [price_details]="
+                [
+                    {
+                        'total_price': grand_total,
+                        'discount': total_discount,
+                        'price': total_pay
+                    },
+                    {
+                        'total': 'Grand Total',
+                        'discount': 'Discount',
+                        'net' :'Total Payable'
+                    }
+                ]
+                "></app-price-card>
+                <div class="buy-btn flex center" (click)="openCheckOut()">Buy Now</div>
+            </div>
+
+        </div>
+    </div>
+    <ng-container *ngIf="!list_length">
+        <div class="empty-bag-text">Your Bag is Empty :(</div>
+    </ng-container>
+
+    <!--user added polaroids-->
+    <div [style.display]="(winX > 767) ? 'block' : 'none' ">
+        <div class="item-list" [style.display]="!list_length ? 'none': 'block' ">
+            <div class="text flex" *ngIf="list_length">
+                <span>Your Polaroid(s)</span> 
+                <span class="close-btn" (click)="closePopup()">X</span>
+            </div>
+            <div>
+                <div *ngFor="let itr of polaroid_list" class="item">
+                    <app-shopping-cart [bag_polaroid]="{
+                        'item_data': itr.item_data,
+                        'id': itr.id,
+                        'showPrices': false
+                    }" [showItems]="false">
+                    </app-shopping-cart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!--Popup of user added polaroids-->
+<div class="overlay" id="overlay-popup-2" [class.fade-in]="767 > winX && isDoubleTapped && list_length">
+    
+    
+    <div class="item-list overlay-inner overlay-flex" 
+    [class.fade-in]="767 > winX && isDoubleTapped && list_length">
+        <div class="text flex" *ngIf="list_length">
+            <span class="text-ellipse">Your Polaroid(s)</span> 
+            <span class="close-btn" (click)="closePopup()">X</span>
+        </div>
+        <div>
+            <div *ngFor="let itr of polaroid_list" class="item">
+                <app-shopping-cart [bag_polaroid]="{
+                    'item_data': itr.item_data,
+                    'id': itr.id,
+                    'showPrices': false
+                }" [showItems]="false">
+                </app-shopping-cart>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
