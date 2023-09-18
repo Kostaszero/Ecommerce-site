@@ -45,7 +45,7 @@ export class ItemListsComponent {
       },
       height: '600px',
       width: '840px',
-      minWidth: (this.winX > 576) ? '80vw' : '100vw'
+      minWidth: (this.winX > 576) ? '50vw' : '100vw'
     });
   }
 
